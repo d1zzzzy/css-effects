@@ -14,6 +14,7 @@ function RouteComponent() {
       <div className={styles.content}>
         <div
           className={styles.circularProgressBar}
+          // @ts-expect-error custom-props
           style={{ "--progress": progress }}
         />
 
