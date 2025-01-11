@@ -1,0 +1,26 @@
+.content {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 150px;
+}
+
+.circularProgressBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(#4caf50 calc(var(--progress, 0) * 1%), #ccc 0);
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+  }
+}
