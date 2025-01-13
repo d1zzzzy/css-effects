@@ -121,5 +121,16 @@ button:focus-visible {
 }
 
 .nav-item {
+  color: hsl(252, 16%, 31%);
   line-height: 40px;
+
+  &.active {
+    color: hsl(210, 92%, 28%);
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
+.text-center {
+  text-align: center;
 }

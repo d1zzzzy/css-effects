@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as CircularProgressBarImport } from './routes/circular-progress-bar'
+import { Route as AnimatedGradientTextImport } from './routes/animated-gradient-text'
 
 // Create Virtual Routes
 
@@ -24,6 +25,12 @@ const IndexLazyImport = createFileRoute('/')()
 const CircularProgressBarRoute = CircularProgressBarImport.update({
   id: '/circular-progress-bar',
   path: '/circular-progress-bar',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AnimatedGradientTextRoute = AnimatedGradientTextImport.update({
+  id: '/animated-gradient-text',
+  path: '/animated-gradient-text',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -44,6 +51,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/animated-gradient-text': {
+      id: '/animated-gradient-text'
+      path: '/animated-gradient-text'
+      fullPath: '/animated-gradient-text'
+      preLoaderRoute: typeof AnimatedGradientTextImport
+      parentRoute: typeof rootRoute
+    }
     '/circular-progress-bar': {
       id: '/circular-progress-bar'
       path: '/circular-progress-bar'
@@ -58,36 +72,41 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/animated-gradient-text': typeof AnimatedGradientTextRoute
   '/circular-progress-bar': typeof CircularProgressBarRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/animated-gradient-text': typeof AnimatedGradientTextRoute
   '/circular-progress-bar': typeof CircularProgressBarRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/animated-gradient-text': typeof AnimatedGradientTextRoute
   '/circular-progress-bar': typeof CircularProgressBarRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/circular-progress-bar'
+  fullPaths: '/' | '/animated-gradient-text' | '/circular-progress-bar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/circular-progress-bar'
-  id: '__root__' | '/' | '/circular-progress-bar'
+  to: '/' | '/animated-gradient-text' | '/circular-progress-bar'
+  id: '__root__' | '/' | '/animated-gradient-text' | '/circular-progress-bar'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  AnimatedGradientTextRoute: typeof AnimatedGradientTextRoute
   CircularProgressBarRoute: typeof CircularProgressBarRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  AnimatedGradientTextRoute: AnimatedGradientTextRoute,
   CircularProgressBarRoute: CircularProgressBarRoute,
 }
 
@@ -102,11 +121,15 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/animated-gradient-text",
         "/circular-progress-bar"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/animated-gradient-text": {
+      "filePath": "animated-gradient-text.tsx"
     },
     "/circular-progress-bar": {
       "filePath": "circular-progress-bar.tsx"
