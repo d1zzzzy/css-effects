@@ -2,8 +2,8 @@ import {createRootRoute, Link, Outlet} from "@tanstack/react-router";
 
 export const Route = createRootRoute({
   component: () => (
-    <main className="flex flex-row w-full h-full">
-      <aside className="p-2 flex flex-column gap-2 aside">
+    <main className="flex flex-row w-full h-full overflow-hidden">
+      <aside className="p-2 flex flex-column gap-2 aside overflow-y-scroll h-m-full">
         <Link to="/" className="[&.active]:font-bold nav-item">
           /
         </Link>
@@ -19,9 +19,15 @@ export const Route = createRootRoute({
         >
           渐变文本动画
         </Link>
+        <Link
+          to="/css-scroll-animation"
+          className="[&.active]:font-bold nav-item"
+        >
+          CSS滚动视察动画
+        </Link>
       </aside>
 
-      <section className="content flex-1">
+      <section className="relative content flex-1 overflow-y-scroll h-m-full">
         <Outlet/>
       </section>
       {/*<TanStackRouterDevtools />*/}

@@ -74,12 +74,40 @@ button:focus-visible {
   }
 }
 
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
 .w-full {
   width: 100%;
 }
 
 .h-full {
   height: 100%;
+}
+
+.h-m-full {
+  max-height: 100dvh;
 }
 
 .flex {
@@ -114,7 +142,12 @@ button:focus-visible {
   overflow: hidden;
 }
 
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
 .aside {
+  font-size: 12px;
   width: 180px;
   padding: 20px 30px;
   border-right: 1px solid #222e50;
@@ -133,4 +166,17 @@ button:focus-visible {
 
 .text-center {
   text-align: center;
+}
+
+.lh-40 {
+  line-height: 40px;
+}
+
+.glass-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(238, 108, 77, 0.3) 0%,
+    rgba(238, 108, 77, 0.1) 100%
+  );
+  backdrop-filter: blur(15px);
 }

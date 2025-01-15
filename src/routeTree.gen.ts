@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as CssScrollAnimationImport } from './routes/css-scroll-animation'
 import { Route as CircularProgressBarImport } from './routes/circular-progress-bar'
 import { Route as AnimatedGradientTextImport } from './routes/animated-gradient-text'
 
@@ -21,6 +22,12 @@ import { Route as AnimatedGradientTextImport } from './routes/animated-gradient-
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const CssScrollAnimationRoute = CssScrollAnimationImport.update({
+  id: '/css-scroll-animation',
+  path: '/css-scroll-animation',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const CircularProgressBarRoute = CircularProgressBarImport.update({
   id: '/circular-progress-bar',
@@ -65,6 +72,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CircularProgressBarImport
       parentRoute: typeof rootRoute
     }
+    '/css-scroll-animation': {
+      id: '/css-scroll-animation'
+      path: '/css-scroll-animation'
+      fullPath: '/css-scroll-animation'
+      preLoaderRoute: typeof CssScrollAnimationImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -74,12 +88,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/animated-gradient-text': typeof AnimatedGradientTextRoute
   '/circular-progress-bar': typeof CircularProgressBarRoute
+  '/css-scroll-animation': typeof CssScrollAnimationRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/animated-gradient-text': typeof AnimatedGradientTextRoute
   '/circular-progress-bar': typeof CircularProgressBarRoute
+  '/css-scroll-animation': typeof CssScrollAnimationRoute
 }
 
 export interface FileRoutesById {
@@ -87,14 +103,28 @@ export interface FileRoutesById {
   '/': typeof IndexLazyRoute
   '/animated-gradient-text': typeof AnimatedGradientTextRoute
   '/circular-progress-bar': typeof CircularProgressBarRoute
+  '/css-scroll-animation': typeof CssScrollAnimationRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/animated-gradient-text' | '/circular-progress-bar'
+  fullPaths:
+    | '/'
+    | '/animated-gradient-text'
+    | '/circular-progress-bar'
+    | '/css-scroll-animation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/animated-gradient-text' | '/circular-progress-bar'
-  id: '__root__' | '/' | '/animated-gradient-text' | '/circular-progress-bar'
+  to:
+    | '/'
+    | '/animated-gradient-text'
+    | '/circular-progress-bar'
+    | '/css-scroll-animation'
+  id:
+    | '__root__'
+    | '/'
+    | '/animated-gradient-text'
+    | '/circular-progress-bar'
+    | '/css-scroll-animation'
   fileRoutesById: FileRoutesById
 }
 
@@ -102,12 +132,14 @@ export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AnimatedGradientTextRoute: typeof AnimatedGradientTextRoute
   CircularProgressBarRoute: typeof CircularProgressBarRoute
+  CssScrollAnimationRoute: typeof CssScrollAnimationRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AnimatedGradientTextRoute: AnimatedGradientTextRoute,
   CircularProgressBarRoute: CircularProgressBarRoute,
+  CssScrollAnimationRoute: CssScrollAnimationRoute,
 }
 
 export const routeTree = rootRoute
@@ -122,7 +154,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/animated-gradient-text",
-        "/circular-progress-bar"
+        "/circular-progress-bar",
+        "/css-scroll-animation"
       ]
     },
     "/": {
@@ -133,6 +166,9 @@ export const routeTree = rootRoute
     },
     "/circular-progress-bar": {
       "filePath": "circular-progress-bar.tsx"
+    },
+    "/css-scroll-animation": {
+      "filePath": "css-scroll-animation.tsx"
     }
   }
 }
