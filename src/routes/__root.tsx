@@ -23,7 +23,7 @@ export const Route = createRootRoute({
           to="/css-scroll-animation"
           className="[&.active]:font-bold nav-item"
         >
-          CSS滚动视察动画
+          CSS滚动视差动画
         </Link>
       </aside>
 
