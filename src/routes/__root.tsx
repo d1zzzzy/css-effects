@@ -25,6 +25,12 @@ export const Route = createRootRoute({
         >
           CSS滚动视差动画
         </Link>
+        <Link
+          to="/split-menu"
+          className="[&.active]:font-bold nav-item"
+        >
+          水果忍者菜单
+        </Link>
       </aside>
 
       <section className="relative content flex-1 overflow-y-scroll h-m-full">

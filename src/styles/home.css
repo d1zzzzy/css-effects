@@ -1,0 +1,22 @@
+.home-title {
+    margin-bottom: 60px;
+    font-size: 48px;
+    letter-spacing: 8px;
+    text-shadow: 0 1px 0 #f1f1f1,
+        0 2px 0 #e1e1e1,
+        0 4px 0 #d1d1d1,
+        0 24px 0 rgb(199, 199, 199, .4);
+
+    animation: floating 2s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+@keyframes floating {
+    from {
+        transform: rotate(5deg);
+    }
+
+    to {
+        transform: rotate(-5deg);
+    }
+}
