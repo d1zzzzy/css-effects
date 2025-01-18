@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as SplitMenuImport } from './routes/split-menu'
+import { Route as InteractiveGridAnimationImport } from './routes/interactive-grid-animation'
 import { Route as CssScrollAnimationImport } from './routes/css-scroll-animation'
 import { Route as CircularProgressBarImport } from './routes/circular-progress-bar'
 import { Route as AnimatedGradientTextImport } from './routes/animated-gradient-text'
@@ -27,6 +28,12 @@ const IndexLazyImport = createFileRoute('/')()
 const SplitMenuRoute = SplitMenuImport.update({
   id: '/split-menu',
   path: '/split-menu',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const InteractiveGridAnimationRoute = InteractiveGridAnimationImport.update({
+  id: '/interactive-grid-animation',
+  path: '/interactive-grid-animation',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -86,6 +93,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CssScrollAnimationImport
       parentRoute: typeof rootRoute
     }
+    '/interactive-grid-animation': {
+      id: '/interactive-grid-animation'
+      path: '/interactive-grid-animation'
+      fullPath: '/interactive-grid-animation'
+      preLoaderRoute: typeof InteractiveGridAnimationImport
+      parentRoute: typeof rootRoute
+    }
     '/split-menu': {
       id: '/split-menu'
       path: '/split-menu'
@@ -103,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/animated-gradient-text': typeof AnimatedGradientTextRoute
   '/circular-progress-bar': typeof CircularProgressBarRoute
   '/css-scroll-animation': typeof CssScrollAnimationRoute
+  '/interactive-grid-animation': typeof InteractiveGridAnimationRoute
   '/split-menu': typeof SplitMenuRoute
 }
 
@@ -111,6 +126,7 @@ export interface FileRoutesByTo {
   '/animated-gradient-text': typeof AnimatedGradientTextRoute
   '/circular-progress-bar': typeof CircularProgressBarRoute
   '/css-scroll-animation': typeof CssScrollAnimationRoute
+  '/interactive-grid-animation': typeof InteractiveGridAnimationRoute
   '/split-menu': typeof SplitMenuRoute
 }
 
@@ -120,6 +136,7 @@ export interface FileRoutesById {
   '/animated-gradient-text': typeof AnimatedGradientTextRoute
   '/circular-progress-bar': typeof CircularProgressBarRoute
   '/css-scroll-animation': typeof CssScrollAnimationRoute
+  '/interactive-grid-animation': typeof InteractiveGridAnimationRoute
   '/split-menu': typeof SplitMenuRoute
 }
 
@@ -130,6 +147,7 @@ export interface FileRouteTypes {
     | '/animated-gradient-text'
     | '/circular-progress-bar'
     | '/css-scroll-animation'
+    | '/interactive-grid-animation'
     | '/split-menu'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -137,6 +155,7 @@ export interface FileRouteTypes {
     | '/animated-gradient-text'
     | '/circular-progress-bar'
     | '/css-scroll-animation'
+    | '/interactive-grid-animation'
     | '/split-menu'
   id:
     | '__root__'
@@ -144,6 +163,7 @@ export interface FileRouteTypes {
     | '/animated-gradient-text'
     | '/circular-progress-bar'
     | '/css-scroll-animation'
+    | '/interactive-grid-animation'
     | '/split-menu'
   fileRoutesById: FileRoutesById
 }
@@ -153,6 +173,7 @@ export interface RootRouteChildren {
   AnimatedGradientTextRoute: typeof AnimatedGradientTextRoute
   CircularProgressBarRoute: typeof CircularProgressBarRoute
   CssScrollAnimationRoute: typeof CssScrollAnimationRoute
+  InteractiveGridAnimationRoute: typeof InteractiveGridAnimationRoute
   SplitMenuRoute: typeof SplitMenuRoute
 }
 
@@ -161,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnimatedGradientTextRoute: AnimatedGradientTextRoute,
   CircularProgressBarRoute: CircularProgressBarRoute,
   CssScrollAnimationRoute: CssScrollAnimationRoute,
+  InteractiveGridAnimationRoute: InteractiveGridAnimationRoute,
   SplitMenuRoute: SplitMenuRoute,
 }
 
@@ -178,6 +200,7 @@ export const routeTree = rootRoute
         "/animated-gradient-text",
         "/circular-progress-bar",
         "/css-scroll-animation",
+        "/interactive-grid-animation",
         "/split-menu"
       ]
     },
@@ -192,6 +215,9 @@ export const routeTree = rootRoute
     },
     "/css-scroll-animation": {
       "filePath": "css-scroll-animation.tsx"
+    },
+    "/interactive-grid-animation": {
+      "filePath": "interactive-grid-animation.tsx"
     },
     "/split-menu": {
       "filePath": "split-menu.tsx"

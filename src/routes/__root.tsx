@@ -31,6 +31,12 @@ export const Route = createRootRoute({
         >
           水果忍者菜单
         </Link>
+        <Link
+          to="/interactive-grid-animation"
+          className="[&.active]:font-bold nav-item"
+        >
+          Grid视觉交互动画
+        </Link>
       </aside>
 
       <section className="relative content flex-1 overflow-y-scroll h-m-full">

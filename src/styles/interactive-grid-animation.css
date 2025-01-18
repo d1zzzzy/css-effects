@@ -1,0 +1,110 @@
+.grid-animation {
+  position: relative;
+  --red-rgb: 248 113 113;
+  --blue-rgb: 56 189 248;
+  --green-rgb: 74 222 128;
+  --yellow-rgb: 253 224 71;
+  --dark-bg: 0, 1, 0;
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  background-color: rgb(var(--dark-bg));
+  overflow: hidden;
+  perspective: 2000px;
+
+  .container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: grid;
+    width: 1600px;
+    height: 1600px;
+    /* 40 * 40 = 1600 nodes */
+    grid-template-rows: repeat(40, 1fr);
+    grid-template-columns: repeat(40, 1fr);
+    aspect-ratio: 1;
+    transform: translate(-65%, -60%) rotateX(50deg) rotateY(-5deg) rotateZ(20deg) scale(1.2 );
+
+    .tile {
+      border: 1px solid rgb(255 255 255 / 25%);
+      transition: background-color 1500ms;
+      will-change: background-color;
+    }
+
+    .tile:hover {
+      transition-duration: 0ms;
+    }
+
+    .tile:nth-child(4n):hover {
+      background-color: rgb(var(--red-rgb));
+    }
+
+    .tile:nth-child(4n + 1):hover {
+      background-color: rgb(var(--blue-rgb));
+    }
+
+    .tile:nth-child(4n + 2):hover {
+      background-color: rgb(var(--green-rgb));
+    }
+
+    .tile:nth-child(4n + 3):hover {
+      background-color: rgb(var(--yellow-rgb));
+    }
+
+    .tile:nth-child(7n):hover {
+      background-color: rgb(var(--blue-rgb));
+    }
+
+    .tile:nth-child(7n + 3):hover {
+      background-color: rgb(var(--green-rgb));
+    }
+
+    .tile:nth-child(7n + 5):hover {
+      background-color: rgb(var(--yellow-rgb));
+    }
+
+    .tile:nth-child(7n + 6):hover {
+      background-color: rgb(var(--red-rgb));
+    }
+
+    .tile:nth-child(11n + 1):hover {
+      background-color: rgb(var(--red-rgb));
+    }
+
+    .tile:nth-child(11n + 4):hover {
+      background-color: rgb(var(--blue-rgb));
+    }
+
+    .tile:nth-child(11n + 7):hover {
+      background-color: rgb(var(--green-rgb));
+    }
+
+    .tile:nth-child(11n + 10):hover {
+      background-color: rgb(var(--yellow-rgb));
+    }
+
+    &::after,
+    &::before {
+      position: absolute;
+      content: "";
+      inset: 0px;
+      pointer-events: none;
+    }
+
+    &:before {
+      z-index: 2;
+      background-image: url("./pattern-center.webp");
+      background-size: 5%;
+      background-repeat: repeat;
+    }
+
+    &:after {
+      background: radial-gradient(circle, transparent 15%, rgb(var(--dark-bg)) 80%);
+      z-index: 3;
+    }
+  }
+}
